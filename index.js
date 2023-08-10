@@ -31,9 +31,10 @@ let isRecording = false
 
 /* When message is sent*/
 client.on('messageCreate', async (message) => {
-    if (!message.member.permissions.has('ADMINISTRATOR')) return message.channel.send('You do not have permission to use this command.');
+    i
     const voiceChannel = message.member.voice.channel
     if (message.content.startsWith('?record')) {
+        if (!message.member.permissions.has('ADMINISTRATOR')) return message.channel.send('You do not have permission to use this command.');
         if (isRecording) {
             return message.channel.send("I'm already recording")
         }
@@ -69,6 +70,7 @@ client.on('messageCreate', async (message) => {
         }
     }
     else if (message.content.startsWith('?stop')) {
+        if (!message.member.permissions.has('ADMINISTRATOR')) return message.channel.send('You do not have permission to use this command.');
         if (!isRecording) {
             return message.channel.send("I'm not recording")
         }
